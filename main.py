@@ -7,6 +7,7 @@ import numpy as np
 app = FastAPI()
 
 origins = [
+    "https://web-raytracing-6whzxtezv-harukis-projects-afa812ca.vercel.app",
     "http://localhost:3000",
 ]
 
