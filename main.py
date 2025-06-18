@@ -43,10 +43,18 @@ def send_message(msg: Message):
         ante_polor = 'TE'
         rt = RayTracing(N=N, surfs=surfs.tri_surf, t_p=tp, r_p=rp, ante_polor=ante_polor)
         rt.do_ray_tracing()
+
+        routes = []
+        for i in range(len(rt.rays_list)):
+            route = rt.rays_list[i].route
+            routes.append([element.tolist() for element in route])
+
         return {
             "points": points.tolist(),
-            # "surfsList": surfs_list,
-            "surfsListIdxs": surfs_list_idxs
+            "surfsListIdxs": surfs_list_idxs,
+            "routes": routes,
+            "tp": tp.tolist(),
+            "rp": rp.tolist(),
         }
     except Exception as e:
         return {"error": str(e)}
